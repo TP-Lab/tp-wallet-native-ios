@@ -59,7 +59,7 @@
     NSMutableDictionary *params = [super tp_toJSONObject].mutableCopy;
     params[@"from"] = self.from;
     params[@"to"] = self.to;
-    params[@"amount"] = self.amount;
+    params[@"amount"] = [self.amount stringValue];
     params[@"contract"] = self.contract;
     params[@"symbol"] = self.symbol;
     params[@"precision"] = self.precision;
