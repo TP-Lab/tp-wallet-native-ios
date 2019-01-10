@@ -8,6 +8,12 @@
 
 #import "TPReqObj.h"
 
+
+NSString *const kTPSDKActionLogin = @"login";
+NSString *const kTPSDKActionTransfer = @"transfer";
+NSString *const kTPSDKActionPushTransaction = @"pushTransaction";
+
+
 #pragma mark ~~~~ TPReqObj ~~~~
 
 @implementation TPReqObj
@@ -32,7 +38,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.action = @"login";
+        self.action = kTPSDKActionLogin;
     }
     return self;
 }
@@ -47,7 +53,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.action = @"transfer";
+        self.action = kTPSDKActionTransfer;
     }
     return self;
 }
@@ -64,7 +70,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.action = @"pushTransaction";
+        self.action = kTPSDKActionPushTransaction;
     }
     return self;
 }
