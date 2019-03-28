@@ -10,6 +10,8 @@
 #import <objc/runtime.h>
 
 
+void TPSDKLinkObjCategoryFile(void) {}
+
 #pragma mark ~~~~ TPReqObj (Private) ~~~~
 
 @implementation TPReqObj (Private)

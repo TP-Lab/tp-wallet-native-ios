@@ -9,19 +9,15 @@
 #import "TPReqObj.h"
 
 
+
+/**  链接category文件，避免使用-ObjC */
+FOUNDATION_EXPORT void TPSDKLinkObjCategoryFile(void);
+
 #pragma mark ~~~~ TPReqObj (Private) ~~~~
 
 @interface TPReqObj (Private)
 
 /**  生成json对象 */
 - (NSDictionary *)tp_toJSONObject;
-
-@end
-
-
-#pragma mark ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#pragma mark ~~~~ TPTransferObj (Private) ~~~~
-
-@interface TPTransferObj (Private)
 
 @end

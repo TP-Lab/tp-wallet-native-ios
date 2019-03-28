@@ -34,6 +34,7 @@ static NSString *callback_schema = nil;
 
 /**  发起 */
 + (BOOL)send:(TPReqObj *)obj {
+    TPSDKLinkObjCategoryFile();
     NSDictionary *params = [obj tp_toJSONObject];
     NSString *JSONString = [self toJSONString:params];
     NSString *URLString = [NSString stringWithFormat:@"tpoutside://pull.activity?%@=%@", kReqParam, JSONString];
