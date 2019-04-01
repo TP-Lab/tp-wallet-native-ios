@@ -13,7 +13,7 @@
 /**  链接category文件，避免使用-ObjC */
 FOUNDATION_EXPORT void TPSDKLinkObjCategoryFile(void);
 
-#pragma mark ~~~~ TPReqObj (Private) ~~~~
+
 
 @interface TPReqObj (Private)
 

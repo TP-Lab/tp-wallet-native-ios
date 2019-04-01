@@ -26,8 +26,11 @@ static NSString *callback_schema = nil;
 + (BOOL)sendObj:(TPReqObj *)obj {
     if (obj.callbackSchema.length) callback_schema = obj.callbackSchema;
     else obj.callbackSchema = [NSString stringWithFormat:@"%@://tpsdk/?param", appid_for_tp];
-    if ([obj isKindOfClass:TPReqObj.class]) {
-        return [self send:(TPTransferObj *)obj];
+    if ([obj isKindOfClass:TPSignObj.class] ||
+        [obj isKindOfClass:TPLoginObj.class] ||
+        [obj isKindOfClass:TPTransferObj.class] ||
+        [obj isKindOfClass:TPPushTransactionObj.class]) {
+        return [self send:obj];
     }
     return NO;
 }
@@ -45,6 +48,7 @@ static NSString *callback_schema = nil;
 + (BOOL)handleURL:(NSURL *)url
           options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
            result:(void (^)(TPRespObj *))result {
+
     if ([url.scheme isEqualToString:appid_for_tp] ||
         [url.absoluteString hasPrefix:callback_schema])
     {
@@ -56,7 +60,7 @@ static NSString *callback_schema = nil;
     return NO;
 }
 
-#pragma mark ~~~~ Private ~~~~
+#pragma mark - Private -
 
 /**  跳转 TP App */
 + (BOOL)openURLWithString:(NSString *)URLString {

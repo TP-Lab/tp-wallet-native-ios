@@ -7,15 +7,15 @@
 //
 
 #import "TPReqObj+Private.h"
-#import <objc/runtime.h>
 
 
 void TPSDKLinkObjCategoryFile(void) {}
 
-#pragma mark ~~~~ TPReqObj (Private) ~~~~
+
+#pragma mark - TPReqObj (Private)
+
 
 @implementation TPReqObj (Private)
-
 
 - (NSDictionary *)tp_toJSONObject {
     NSMutableDictionary *params = [NSMutableDictionary new];
@@ -38,9 +38,7 @@ void TPSDKLinkObjCategoryFile(void) {}
 @end
 
 
-#pragma mark ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#pragma mark ~~~~ TPLoginObj (Private) ~~~~
+#pragma mark - TPLoginObj (Private)
 
 @implementation TPLoginObj (Private)
 
@@ -53,7 +51,21 @@ void TPSDKLinkObjCategoryFile(void) {}
 @end
 
 
-#pragma mark ~~~~ TPTransferObj (Private) ~~~~
+#pragma mark - TPSignObj (Private)
+
+@implementation TPSignObj (Private)
+
+- (NSDictionary *)tp_toJSONObject {
+    NSMutableDictionary *params = [super tp_toJSONObject].mutableCopy;
+    params[@"wallet"] = self.wallet;
+    params[@"message"] = self.message;
+    return params.copy;
+}
+
+@end
+
+
+#pragma mark - TPTransferObj (Private)
 
 @implementation TPTransferObj (Private)
 
@@ -72,7 +84,7 @@ void TPSDKLinkObjCategoryFile(void) {}
 @end
 
 
-#pragma mark ~~~~ TPPushTransactionObj (Private) ~~~~
+#pragma mark - TPPushTransactionObj (Private)
 
 @implementation TPPushTransactionObj (Private)
 

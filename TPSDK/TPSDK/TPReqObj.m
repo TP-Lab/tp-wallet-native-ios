@@ -9,12 +9,13 @@
 #import "TPReqObj.h"
 
 
+NSString *const kTPSDKActionSign = @"sign";
 NSString *const kTPSDKActionLogin = @"login";
 NSString *const kTPSDKActionTransfer = @"transfer";
 NSString *const kTPSDKActionPushTransaction = @"pushTransaction";
 
 
-#pragma mark ~~~~ TPReqObj ~~~~
+#pragma mark - TPReqObj -
 
 @implementation TPReqObj
 
@@ -22,6 +23,15 @@ NSString *const kTPSDKActionPushTransaction = @"pushTransaction";
     if (self = [super init]) {
         _protocol = @"TPProtocol";
         _version = [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        if ([self isKindOfClass:TPSignObj.class]) {
+            _action = kTPSDKActionSign;
+        }else if ([self isKindOfClass:TPLoginObj.class]) {
+            _action = kTPSDKActionLogin;
+        }else if ([self isKindOfClass:TPTransferObj.class]) {
+            _action = kTPSDKActionTransfer;
+        }else if ([self isKindOfClass:TPPushTransactionObj.class]) {
+            _action = kTPSDKActionPushTransaction;
+        }
     }
     return self;
 }
@@ -31,48 +41,29 @@ NSString *const kTPSDKActionPushTransaction = @"pushTransaction";
 
 
 
-#pragma mark ~~~~~~~~~~~~~~~~~~~~~~~
-#pragma mark ~~~~ TPLoginObj ~~~~
+#pragma mark - TPLoginObj -
 
 @implementation TPLoginObj
 
-- (instancetype)init {
-    if (self = [super init]) {
-        self.action = kTPSDKActionLogin;
-    }
-    return self;
-}
+@end
+
+
+#pragma mark - TPSignObj -
+
+@implementation TPSignObj
 
 @end
 
 
-#pragma mark ~~~~~~~~~~~~~~~~~~~~~~~
-#pragma mark ~~~~ TPTransferObj ~~~~
+#pragma mark - TPTransferObj -
 
 @implementation TPTransferObj
 
-- (instancetype)init {
-    if (self = [super init]) {
-        self.action = kTPSDKActionTransfer;
-    }
-    return self;
-}
-
 @end
 
 
-
-#pragma mark ~~~~~~~~~~~~~~~~~~~~~~~
-#pragma mark ~~~~ TPPushTransactionObj ~~~~
-
+#pragma mark - TPPushTransactionObj -
 
 @implementation TPPushTransactionObj
-
-- (instancetype)init {
-    if (self = [super init]) {
-        self.action = kTPSDKActionPushTransaction;
-    }
-    return self;
-}
 
 @end

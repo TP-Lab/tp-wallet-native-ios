@@ -87,6 +87,7 @@
 		18529C42214113800058C60D /* TPSDK */ = {
 			isa = PBXGroup;
 			children = (
+				18529C44214113800058C60D /* Info.plist */,
 				18529C43214113800058C60D /* TPSDK.h */,
 				18529C4D214114880058C60D /* TPApi.h */,
 				18529C52214114890058C60D /* TPApi.m */,
@@ -96,7 +97,6 @@
 				18529C4C214114880058C60D /* TPRespObj.m */,
 				18529C4E214114880058C60D /* TPReqObj+Private.h */,
 				18529C50214114890058C60D /* TPReqObj+Private.m */,
-				18529C44214113800058C60D /* Info.plist */,
 			);
 			path = TPSDK;
 			sourceTree = "<group>";
