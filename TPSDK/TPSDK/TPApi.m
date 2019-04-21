@@ -49,8 +49,8 @@ static NSString *callback_schema = nil;
           options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
            result:(void (^)(TPRespObj *))result {
 
-    if ([url.scheme isEqualToString:appid_for_tp] ||
-        [url.absoluteString hasPrefix:callback_schema])
+    if ((appid_for_tp && [url.scheme isEqualToString:appid_for_tp]) ||
+        (callback_schema && [url.absoluteString hasPrefix:callback_schema]))
     {
         TPRespObj *respObj = [self respObjWithURL:url];
         if (result) result(respObj);
